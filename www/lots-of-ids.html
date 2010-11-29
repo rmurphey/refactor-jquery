@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+
+  <title>Refactoring Your jQuery</title>
+  <meta name="author" content="Rebecca Murphey">
+
+  <!-- CSS : implied media="all" -->
+  <link rel="stylesheet" href="css/style.css?v=1">
+</head>
+
+<body>
+  <div id="container">
+
+    <header>
+      <h1>Refactoring Your jQuery: Lots of IDs</h1>
+    </header>
+
+    <ul>
+      <li class="toggle-en">English</li>
+      <li class="toggle-es">Spanish</li>
+    </ul>
+
+    <ul>
+      <li id="thinger_698"><a href="#thinger_entry_698">Thinger 698</a></li>
+      <li id="thinger_699"><a href="#thinger_entry_699">Thinger 699</a></li>
+    </ul>
+
+    <script>
+    $(document).ready(function() {
+      // If the hash in the URL matches this thinger, show this thinger
+      if (window.location.hash == 'thinger_698') {
+        $('.toggle-thinger').removeClass('selected');
+        $('#thinger_698').addClass('selected');
+        $('.thinger').hide();
+        $('#thinger_entry_698').show();
+        $('#thinger_entry_698 .es').hide();
+        $('#thinger_entry_698 .en').show();
+      }
+
+      // Onclick: Toggle thinger, and make sure english-language stuff is set
+      $('a[href=#thinger_entry_698]').click(function() {
+        $('.toggle-thinger').removeClass('selected');
+        $('#thinger_698').addClass('selected');
+        $('.thinger').hide();
+        $('#thinger_entry_698').show();
+        $('#thinger_entry_698 .es').hide();
+        $('#thinger_entry_698 .en').show();
+      });
+      
+      // Show the spanish language content
+      $('#thinger_entry_698 .toggle-es').click(function() {
+        $('#thinger_entry_698 .es').show();
+        $('#thinger_entry_698 .en').hide();
+      });
+      
+      // Show the spanish language content
+      $('#thinger_entry_698 .toggle-en').click(function() {
+        $('#thinger_entry_698 .es').hide();
+        $('#thinger_entry_698 .en').show();
+      });
+    });
+    </script>
+
+    <div class="item thinger" id="thinger_entry_698" style="display:none"> 
+      <h2>Thinger 698</h2>
+ 
+      <div class="thinger-slideshow en col"> 
+        Some English content
+      </div>
+
+      <div class="thinger-slideshow es col"> 
+        Some Spanish content
+      </div>
+
+      <div class="col en" style="width:150px;padding-top:16px;"> 
+        <ul> 
+          <li>List item 1</li>
+          <li>List item 2</li>
+        </ul> 
+      </div> 
+            
+      <div class="thinger-bio en">
+      English bio
+      </div> 
+ 
+      <div class="thinger-bio es"> 
+      Spanish bio 
+      </div> 
+ 
+    </div> 
+    
+    <div class="item thinger" id="thinger_entry_699" style="display:none"> 
+      <h2>Thinger 699</h2>
+ 
+      <div class="thinger-slideshow en col"> 
+        Some English content
+      </div>
+
+      <div class="thinger-slideshow es col"> 
+        Some Spanish content
+      </div>
+
+      <div class="col en" style="width:150px;padding-top:16px;"> 
+        <ul> 
+          <li>List item 1</li>
+          <li>List item 2</li>
+        </ul> 
+      </div> 
+            
+      <div class="thinger-bio en">
+      English bio
+      </div> 
+ 
+      <div class="thinger-bio es"> 
+      Spanish bio 
+      </div> 
+ 
+    </div> 
+    
+    <script>
+    $(document).ready(function() {
+      // If the hash in the URL matches this thinger, show this thinger
+      if (window.location.hash == 'thinger_699') {
+        $('.toggle-thinger').removeClass('selected');
+        $('#thinger_699').addClass('selected');
+        $('.thinger').hide();
+        $('#thinger_entry_699').show();
+        $('#thinger_entry_699 .es').hide();
+        $('#thinger_entry_699 .en').show();
+      }
+
+      // Onclick: Toggle thinger, and make sure english-language stuff is set
+      $('a[href=#thinger_entry_699]').click(function() {
+        $('.toggle-thinger').removeClass('selected');
+        $('#thinger_699').addClass('selected');
+        $('.thinger').hide();
+        $('#thinger_entry_699').show();
+        $('#thinger_entry_699 .es').hide();
+        $('#thinger_entry_699 .en').show();
+      });
+      
+      // Show the spanish language content
+      $('#thinger_entry_699 .toggle-es').click(function() {
+        $('#thinger_entry_699 .es').show();
+        $('#thinger_entry_699 .en').hide();
+      });
+      
+      // Show the spanish language content
+      $('#thinger_entry_699 .toggle-en').click(function() {
+        $('#thinger_entry_699 .es').hide();
+        $('#thinger_entry_699 .en').show();
+      });
+    });
+    </script>
+
+  </div> <!--! end of #container -->
+
+
+  <!-- Javascript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script>!window.jQuery && document.write('<script src="js/lib/jquery.min.js"><\/script>')</script>
+
+  <script src="js/lib/jquery.ba-bbq.js"></script>
+
+  <!--
+  <script src="js/lots-of-ids-refactored.js"></script>
+  -->
+
+</body>
+</html>

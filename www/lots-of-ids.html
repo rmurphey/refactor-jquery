@@ -18,13 +18,8 @@
     </header>
 
     <ul>
-      <li class="toggle-en">English</li>
-      <li class="toggle-es">Spanish</li>
-    </ul>
-
-    <ul>
-      <li id="thinger_698"><a href="#thinger_entry_698">Thinger 698</a></li>
-      <li id="thinger_699"><a href="#thinger_entry_699">Thinger 699</a></li>
+      <li id="thinger_698" class="toggle-thinger"><a href="#thinger_entry_698">Thinger 698</a></li>
+      <li id="thinger_699" class="toggle-thinger"><a href="#thinger_entry_699">Thinger 699</a></li>
     </ul>
 
     <script>
@@ -64,35 +59,12 @@
     </script>
 
     <div class="item thinger" id="thinger_entry_698" style="display:none"> 
+      <ul>
+        <li class="toggle-en">English</li>
+        <li class="toggle-es">Spanish</li>
+      </ul>
+
       <h2>Thinger 698</h2>
- 
-      <div class="thinger-slideshow en col"> 
-        Some English content
-      </div>
-
-      <div class="thinger-slideshow es col"> 
-        Some Spanish content
-      </div>
-
-      <div class="col en" style="width:150px;padding-top:16px;"> 
-        <ul> 
-          <li>List item 1</li>
-          <li>List item 2</li>
-        </ul> 
-      </div> 
-            
-      <div class="thinger-bio en">
-      English bio
-      </div> 
- 
-      <div class="thinger-bio es"> 
-      Spanish bio 
-      </div> 
- 
-    </div> 
-    
-    <div class="item thinger" id="thinger_entry_699" style="display:none"> 
-      <h2>Thinger 699</h2>
  
       <div class="thinger-slideshow en col"> 
         Some English content
@@ -155,6 +127,39 @@
     });
     </script>
 
+    <div class="item thinger" id="thinger_entry_699" style="display:none"> 
+      <ul>
+        <li class="toggle-en">English</li>
+        <li class="toggle-es">Spanish</li>
+      </ul>
+
+      <h2>Thinger 699</h2>
+ 
+      <div class="thinger-slideshow en col"> 
+        Some English content
+      </div>
+
+      <div class="thinger-slideshow es col"> 
+        Some Spanish content
+      </div>
+
+      <div class="col en" style="width:150px;padding-top:16px;"> 
+        <ul> 
+          <li>List item 1</li>
+          <li>List item 2</li>
+        </ul> 
+      </div> 
+            
+      <div class="thinger-bio en">
+      English bio
+      </div> 
+ 
+      <div class="thinger-bio es"> 
+      Spanish bio 
+      </div> 
+ 
+    </div> 
+    
   </div> <!--! end of #container -->
 
 
@@ -163,12 +168,5 @@
   <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
   <script>!window.jQuery && document.write('<script src="js/lib/jquery.min.js"><\/script>')</script>
-
-  <script src="js/lib/jquery.ba-bbq.js"></script>
-
-  <!--
-  <script src="js/lots-of-ids-refactored.js"></script>
-  -->
-
 </body>
 </html>

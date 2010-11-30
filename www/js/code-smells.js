@@ -145,7 +145,7 @@ var awesome = {
 $(document).ready(function() {
   $('#enableAwesome').click(function() {
     $('ul.foo li')
-      .each(awesomeenableListItem)
+      .each(awesome.enableListItem)
       .delegate('a.remove', 'click', awesome.removeListItem);
   });
 });

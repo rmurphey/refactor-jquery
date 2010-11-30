@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+
+  <title>Refactoring Your jQuery</title>
+  <meta name="author" content="Rebecca Murphey">
+
+  <!-- CSS : implied media="all" -->
+  <link rel="stylesheet" href="css/style.css?v=1">
+</head>
+
+<body>
+  <div id="container">
+
+    <header>
+      <h1>Refactoring Your jQuery: Portlets</h1>
+    </header>
+    
+    <div id="main">
+      <div class="portlet" data-id="paul">
+        <nav>
+          <li class="favorite">Favorite</li>
+          <li class="close">Close</li>
+          <li class="open">Open</li>
+        </nav>
+        <section class="content">
+          <img src="img/paul.png">
+          <h2>Paul Irish</h2>
+          <p>html5 and css3 aficionado, Google Chrome dev relations, jQuery
+          team member, interaction designer and front-end developer, music snob
+          on @Aurgasm</p>
+        </section>
+      </div>
+
+      <div class="portlet" data-id="adam">
+        <nav>
+          <li class="favorite">Favorite</li>
+          <li class="close">Close</li>
+          <li class="open">Open</li>
+        </nav>
+        <section class="content">
+          <img src="img/adam.png">
+          <h2>Adam Sontag</h2>
+          <p>i cohost the @yayquery podcast. i play synth in @bellevuesfinest.
+          i have a lot of monitors but have been known to code in the tub.</p>
+        </section>
+      </div>
+        
+      <div class="portlet" data-id="alex">
+        <nav>
+          <li class="favorite">Favorite</li>
+          <li class="close">Close</li>
+          <li class="open">Open</li>
+        </nav>
+        <section class="content">
+          <img src="img/alex.png">
+          <h2>Alex Sexton</h2>
+          <p>yayQuery Co-host. JS Enthusiast. Labs Engineer at Bazaarvoice.
+          Superhero-like strength, srsly guys.</p>
+        </section>
+      </div>
+        
+      <div class="portlet" data-id="rebecca">
+        <nav>
+          <li class="favorite">Favorite</li>
+          <li class="close">Close</li>
+          <li class="open">Open</li>
+        </nav>
+        <section class="content">
+          <img src="img/rebecca.png">
+          <h2>Rebecca Murphey</h2>
+          <p>JavaScript application developer</p>
+        </section>
+      </div>
+        
+    </div>
+    
+  </div> <!--! end of #container -->
+
+
+  <!-- Javascript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script>!window.jQuery && document.write('<script src="js/lib/jquery.min.js"><\/script>')</script>
+  <script src="js/lib/jquery-ui-1.8.6/ui/jquery.ui.widget.js"></script>
+  <script src="js/portlet.js"></script>
+
+  <script>
+  $(function() {
+    var portlets = $('.portlet');
+
+    $('.portlet .favorite').click(function() {
+      var portlet = $(this).closest('.portlet'),
+          id = portlet.attr('data-id');
+
+      $.ajax({
+        url : '/services/favorite.json',
+        dataType : 'json',
+        data : { id : id },
+        success : function(resp) {
+          if (!resp.success) { return; }
+          portlets.removeClass('favorite').find('.favorite').show();
+          portlet.addClass('favorite').find('.favorite').hide();
+        }
+      });
+    });
+
+    $('.portlet .open').click(function() {
+      var portlet = $(this).closest('.portlet'); 
+      portlet.find('.content').show();
+      portlet.find('.close').show();
+      $(this).hide();
+    }).hide();
+
+    $('.portlet .close').click(function() {
+      var portlet = $(this).closest('.portlet');
+      portlet.find('.content').hide();
+      portlet.find('.open').show();
+      $(this).hide();
+    });
+  });
+  </script>
+
+</body>
+</html>

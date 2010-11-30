@@ -6,3 +6,30 @@ body {
 .selected {
   font-weight:bold;
 }
+
+.portlet {
+  border:1px solid #000;
+  padding:10px;
+  margin:0 0 10px 0;
+}
+
+.portlet nav {
+  margin:0 0 10px 0;
+  overflow:hidden;
+}
+
+.portlet nav li {
+  list-style-type:none;
+  float:left;
+  margin:0 10px 0 0;
+  cursor:pointer;
+  padding:5px;
+}
+
+.portlet nav li:hover {
+  background-color:cyan;
+}
+
+.portlet.favorite {
+  background-color:magenta;
+}

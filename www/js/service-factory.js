@@ -1,36 +1,33 @@
-// original code:
-// - no error callbacks
-// - every new content type requires a new function
-// - repeated strings -- bad for minification & maintenance
-function getPost(id, callback) {
-  $.getJSON('/content-service/post/' + id, callback);
-}
-
-function getAuthor(id, callback) {
-  $.getJSON('/content-service/author/' + id, callback);
-}
-
-function getTag(id, callback) {
-  $.getJSON('/content-service/tag/' + id, callback);
-}
-
-
 // code as API factory:
 // - no repetition of strings (better minification)
 // - easy to define a set of services
 // - success and error callbacks, both optional
 // - ability to override default ajax settings
-var Service = function(config) {
-  var api = {}; 
+// - one-stop caching
+var ServiceFactory = function(config) {
+  var api = {}, 
+      cache = {}; 
 
   $.each(config.services, function(i, svc) {
     api[svc] = function(id, success, error) {
+      var url = [ config.baseUrl, svc, id ].join('/');  
+
+      success = $.isFunction(success) ? success : false;
+
+      if (success && cache[url]) {
+        success(cache[url]);
+        return;
+      }
+
       $.ajax(
         $.extend({}, config.ajaxSettings,
           {
-            url : [ config.baseUrl, svc, id ].join('/'),
+            url : url,
             dataType : 'json',
-            success : success,
+            success : function(data) {
+              cache[url] = data;
+              success && success(data);
+            },
             error : error
           }
         )

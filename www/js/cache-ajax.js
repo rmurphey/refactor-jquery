@@ -1,47 +1,38 @@
 // original code
 $(function() {
-  function getSomething(query, callback) {
-    $.ajax({
-      url : 'foo.php',
-      data : query,
-      type : 'GET',
-      dataType : 'json',
-      success : callback
-    });
+  function getPost(postId, callback) {
+    $.getJSON('/content-service/post/' + postId, callback);
   }
 
-  getSomething({ bar : 'baz' }, function(resp) {
+  getSomething(3, function(resp) {
     console.log(resp);
   });
-
 });
 
 // code with caching
 $(function() {
   var cache = {};
 
-  function getSomething(query, callback) {
-    var key = $.param(query);
+  function getPost(postId, callback) {
+    var url = '/content-service/post/' + postId;
 
-    if (cache[key]) {
-      callback(cache[key]);
+    if (cache[url]) {
+      callback(cache[url]);
       return;
     } else {
       $.ajax({
-        url : 'foo.php',
-        data : query,
+        url : '/content-service/post/' + postId,
         type : 'GET',
         dataType : 'json',
         success : function(resp) {
-          cache[key] = resp;
+          cache[url] = resp;
           callback(resp);
         }
       });
     }
   }
 
-  getSomething({ bar : 'baz' }, function(resp) {
+  getPost(3, function(resp) {
     console.log(resp);
   });
-
 });

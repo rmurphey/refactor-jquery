@@ -37,3 +37,23 @@ body {
 .portlet section {
   margin:10px 0 0 0;
 }
+
+.portlet li.open {
+  display:none;
+}
+
+.portlet.closed li.open {
+  display:block;
+}
+
+.portlet.closed li.close {
+  display:none;
+}
+
+.portlet.favorite li.favorite {
+  display:none;
+}
+
+.portlet.closed .content {
+  display:none;
+}

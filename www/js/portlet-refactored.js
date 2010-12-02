@@ -13,6 +13,16 @@ var Portlet = function(el) {
   function favorite(favoritedId) {
     if (id == favoritedId) { return; }
     el.removeClass('favorite');
+    $.ajax({
+      url : '/services/favorite.json',
+      dataType : 'json',
+      data : { id : id },
+      success : function(resp) {
+        if (!resp.success) { return; }
+        el.addClass('favorite');
+        $.publish('/portlet/favorite', [ id ]);
+      }
+    });  
   }
 
   el.delegate('li.open', 'click', open);
@@ -22,13 +32,30 @@ var Portlet = function(el) {
   $.subscribe('/portlet/favorite', unfavorite);
   
   return {
-    
+    set : function(opt, val) {
+      if (opt == 'open') {
+        if (val) {
+          open();
+        } else {
+          close();
+        }
+        return;
+      }
+      
+      if (opt == 'favorite') {
+        if (val) {
+          favorite();
+        } else {
+          el.removeClass('favorite');
+        }
+      }
+    }
   };
 };
 
 
 $(function() {
   $('.portlet').each(function() {
-    new Porltet($(this));
+    this.data('portlet', new Porltet($(this)));
   });
 });

@@ -19,9 +19,9 @@ $(function() {
 
   $('.portlet .open').click(function() {
     $(this).closest('.portlet').removeClass('closed');
-  }).hide();
+  });
 
   $('.portlet .close').click(function() {
-    $(this).closest('.portlet').removeClass('closed');
+    $(this).closest('.portlet').addClass('closed');
   });
 });

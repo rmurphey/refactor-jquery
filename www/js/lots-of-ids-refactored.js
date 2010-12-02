@@ -61,8 +61,8 @@ $(function() {
    * the id we're trying to control
    */
   $('.toggle-thinger').click(function(e) {
-    var thinger = $(this).attr('id').replace('thinger_','');
-    selectThinger(thinger);
+    var thingerId = $(this).attr('id').replace('thinger_','');
+    selectThinger(thingerId);
     e.preventDefault(); 
   });
 

@@ -10,9 +10,7 @@ var Portlet = function(el) {
     el.addClass('closed');
   }
 
-  function favorite(favoritedId) {
-    if (id == favoritedId) { return; }
-    el.removeClass('favorite');
+  function favorite() {
     $.ajax({
       url : '/services/favorite.json',
       dataType : 'json',
@@ -23,6 +21,11 @@ var Portlet = function(el) {
         $.publish('/portlet/favorite', [ id ]);
       }
     });  
+  }
+  
+  function unfavorite(favoritedId) {
+    if (id == favoritedId) { return; }
+    el.removeClass('favorite');
   }
 
   el.delegate('li.open', 'click', open);
@@ -56,6 +59,7 @@ var Portlet = function(el) {
 
 $(function() {
   $('.portlet').each(function() {
-    this.data('portlet', new Porltet($(this)));
+    var $this = $(this);
+    $this.data('portlet', new Portlet($this));
   });
 });
